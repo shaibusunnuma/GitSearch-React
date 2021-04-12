@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { GithubContext } from '../context/context';
-import { Pie, Column, Bar, Doughnut, ExampleChart } from './Charts';
+import { Pie, Column, Bar, Doughnut } from './Charts';
 
 
 const Repos = () => {
   const {repos} = React.useContext(GithubContext)
+  
   const languages = repos.reduce((total, item)=>{
     const {language, stargazers_count} = item
     if(!language)return total

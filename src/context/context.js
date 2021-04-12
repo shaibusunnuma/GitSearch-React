@@ -20,6 +20,40 @@ const GithubProvider = ({children}) =>{
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState({show: false, msg: ''})
 
+  const searchGithubUser = async (user) =>{
+    toggleError('')
+    setLoading(true)
+    const response = await axios(`${rootUrl}/users/${user}`).
+    catch(err =>console.log(err))
+    if (response){
+      setGithubUser(response.data)
+      const {login, followers_url} = response.data
+      getReposAndFollowers(login, followers_url)
+      
+    }else{
+      toggleError(true, 'no user with username')
+    }
+    checkRequests()
+    setLoading(false)
+  }
+
+  const getReposAndFollowers = async(login, followers_url) =>{
+    await Promise.allSettled([
+        axios(`${rootUrl}/users/${login}/repos?per_page=100`),
+        axios(`${followers_url}?per_page=100`)
+      ]).then((result) =>{
+        const [repos, followers] = result
+        const status = 'fulfilled'
+        if(repos.status === status){
+          setRepos(repos.value.data)
+        }
+        if(followers.status === status){
+          setFollowers(followers.value.data)
+        }
+      }).catch(error => console.log(error))
+  }
+  
+  //chech rate
   const checkRequests = () =>{
     axios(`${rootUrl}/rate_limit`).then(({data}) => {
       let {rate: {remaining}} = data
@@ -37,7 +71,9 @@ const GithubProvider = ({children}) =>{
   useEffect(checkRequests,[])
   
   
-  return <GithubContext.Provider value={{githubUser, repos, followers, requests, error}}>{children}</GithubContext.Provider>
+  return <GithubContext.Provider value={
+    {githubUser, repos, followers, requests, error, searchGithubUser, loading}
+  }>{children}</GithubContext.Provider>
 }
 
 export  {GithubContext, GithubProvider};
