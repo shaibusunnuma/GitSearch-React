@@ -1,11 +1,5 @@
-## Starter Project
 
-- css provided (global styles, styled components)
-- folders/files already setup
-- all imports included (warnings)
-- index.js for easier imports
-
-## Styled Components
+## Using Styled Components
 
 [Styled-Components - Main Docs](https://styled-components.com/)
 
@@ -26,7 +20,7 @@ write your styles here
 export default ReactComponent
 ```
 
-## React Icons
+## Using React Icons
 
 [React Icons - Main Docs](https://react-icons.github.io/react-icons/)
 
@@ -35,7 +29,7 @@ import { FiUsers, FiUserPlus } from 'react-icons/fi';
 <FiUsers className='nameOfTheClass'> </FiUsers>;
 ```
 
-## React Router Dom
+## Using React Router Dom
 
 version used - "react-router-dom": "^5.2.0",
 
@@ -44,7 +38,7 @@ version used - "react-router-dom": "^5.2.0",
 - <Switch> renders the first child <Route> that matches
 - A <Route path="*"> always matches
 
-## Gihthub API
+## Using the Gihthub API
 
 - [Root Endpoint](https://api.github.com)
 - [Get User](https://api.github.com/users/wesbos)
@@ -54,14 +48,14 @@ version used - "react-router-dom": "^5.2.0",
 
   For unauthenticated requests, the rate limit allows for up to 60 requests per hour. Unauthenticated requests are associated with the originating IP address, and not the user making requests.
 
-## Fusion Charts
+## Using Fusion Charts to display user stats
 
 - [Fusion Charts - Main Docs](https://www.fusioncharts.com/)
 - [First React Chart](https://www.fusioncharts.com/dev/getting-started/react/your-first-chart-using-react)
 - [List Of Charts](https://www.fusioncharts.com/dev/chart-guide/list-of-charts)
 - [Themes](https://www.fusioncharts.com/dev/themes/introduction-to-themes)
 
-## Auth0
+## Using Auth0 for login and authentication
 
 - [Auth0 - Main Docs](https://auth0.com/)
 
